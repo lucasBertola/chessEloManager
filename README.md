@@ -1,15 +1,33 @@
-# Chess Rating Converter
+# 🏆 Chess Rating Converter
 
-A simple web application to convert chess ratings between Lichess and Chess.com platforms.
+A modern web application to convert chess ratings between Lichess and Chess.com platforms.
 
-## Features
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Site-blue)](https://lucasbertola.github.io/chessEloManager/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-- Convert ratings between Lichess and Chess.com
-- Support for Rapid time control (Bullet and Blitz coming soon)
-- Clean and intuitive interface
-- Real-time conversion
+## ✨ Features
 
-## Getting Started
+- 🔄 Convert ratings between Lichess and Chess.com
+- ⏱️ Support for Rapid time control (Bullet and Blitz coming soon)
+- 🎨 Clean and intuitive interface
+- ⚡ Real-time conversion
+- 🌐 Automatic deployment with GitHub Actions
+
+## 🚀 Live Demo
+
+Check out the live version of the application:
+[https://lucasbertola.github.io/chessEloManager/](https://lucasbertola.github.io/chessEloManager/)
+
+## 🛠️ Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- GitHub Pages
+- GitHub Actions
+
+## 📦 Getting Started
 
 ### Prerequisites
 
@@ -20,8 +38,8 @@ A simple web application to convert chess ratings between Lichess and Chess.com 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/chess-rating-converter.git
-cd chess-rating-converter
+git clone https://github.com/lucasBertola/chessEloManager.git
+cd chessEloManager
 ```
 
 2. Install dependencies:
@@ -36,7 +54,7 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
-## Building for Production
+## 🏗️ Building for Production
 
 To build the app for production, run:
 
@@ -46,6 +64,18 @@ npm run build
 
 The built files will be in the `dist` directory.
 
-## License
+## 🔄 Automatic Deployment
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+The application is automatically deployed to GitHub Pages whenever changes are pushed to the `main` branch. This is handled by GitHub Actions.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📫 Contact
+
+If you have any questions or suggestions, feel free to open an issue or contact the maintainer. 
