@@ -4,10 +4,12 @@ import './App.css'
 import './i18n/config'
 
 type Platform = 'lichess' | 'chesscom'
+type TimeControl = 'bullet' | 'blitz' | 'rapid'
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation()
   const [sourcePlatform, setSourcePlatform] = useState<Platform>('lichess')
+  const [timeControl, setTimeControl] = useState<TimeControl>('rapid')
   const [elo, setElo] = useState<string>('')
   const [convertedElo, setConvertedElo] = useState<string>('')
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
@@ -131,6 +133,31 @@ const App: React.FC = () => {
                   }`}
                 >
                   {t('chesscom')}
+                </button>
+              </div>
+            </div>
+
+            {/* Time Control Selection */}
+            <div>
+              <label className="block text-gray-700 mb-2 sm:mb-3 font-medium">{t('timeControl')}</label>
+              <div className="flex space-x-2 sm:space-x-4">
+                <button
+                  className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed text-sm sm:text-base"
+                  disabled
+                >
+                  {t('bullet')}
+                </button>
+                <button
+                  className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed text-sm sm:text-base"
+                  disabled
+                >
+                  {t('blitz')}
+                </button>
+                <button
+                  onClick={() => setTimeControl('rapid')}
+                  className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border bg-blue-600 text-white border-blue-600 shadow-md text-sm sm:text-base"
+                >
+                  {t('rapid')}
                 </button>
               </div>
             </div>
