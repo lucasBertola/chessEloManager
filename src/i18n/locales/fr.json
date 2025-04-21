@@ -1,0 +1,18 @@
+{
+  "title": "Convertisseur d'ELO",
+  "subtitle": "Convertissez votre ELO entre Lichess et Chess.com",
+  "sourcePlatform": "Plateforme Source",
+  "timeControl": "Cadence",
+  "yourRating": "Votre ELO {{platform}}",
+  "equivalentRating": "Votre ELO équivalent sur {{platform}} est :",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rapid",
+  "language": "Langue",
+  "english": "Anglais",
+  "french": "Français",
+  "spanish": "Espagnol",
+  "german": "Allemand"
+} 

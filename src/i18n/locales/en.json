@@ -1,0 +1,18 @@
+{
+  "title": "Chess Rating Converter",
+  "subtitle": "Convert your rating between Lichess and Chess.com",
+  "sourcePlatform": "Source Platform",
+  "timeControl": "Time Control",
+  "yourRating": "Your {{platform}} Rating",
+  "equivalentRating": "Your equivalent rating on {{platform}} is:",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rapid",
+  "language": "Language",
+  "english": "English",
+  "french": "French",
+  "spanish": "Spanish",
+  "german": "German"
+} 
