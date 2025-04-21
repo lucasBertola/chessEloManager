@@ -1,6 +1,6 @@
 {
-  "title": "Chess Rating Converter",
-  "subtitle": "Convert your rating between Lichess and Chess.com",
+  "title": "ELO Converter",
+  "subtitle": "Convert your ELO between Lichess and Chess.com",
   "sourcePlatform": "Source Platform",
   "timeControl": "Time Control",
   "yourRating": "Your {{platform}} Rating",
@@ -14,5 +14,8 @@
   "english": "English",
   "french": "French",
   "spanish": "Spanish",
-  "german": "German"
+  "german": "German",
+  "invalidNumber": "Please enter a valid number",
+  "lichessRangeError": "Lichess ELO must be between {{min}} and {{max}}",
+  "chesscomRangeError": "Chess.com ELO must be between {{min}} and {{max}}"
 } 

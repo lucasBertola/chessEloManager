@@ -14,5 +14,8 @@
   "english": "Anglais",
   "french": "Français",
   "spanish": "Espagnol",
-  "german": "Allemand"
+  "german": "Allemand",
+  "invalidNumber": "Veuillez entrer un nombre valide",
+  "lichessRangeError": "L'ELO Lichess doit être compris entre {{min}} et {{max}}",
+  "chesscomRangeError": "L'ELO Chess.com doit être compris entre {{min}} et {{max}}"
 } 

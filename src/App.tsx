@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import './i18n/config'
+import { convertLichessToChesscom, convertChesscomToLichess } from './utils/conversion'
 
 type Platform = 'lichess' | 'chesscom'
 type TimeControl = 'bullet' | 'blitz' | 'rapid'
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [elo, setElo] = useState<string>('')
   const [convertedElo, setConvertedElo] = useState<string>('')
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
+  const [error, setError] = useState<string>('')
 
   const getFlagEmoji = (langCode: string) => {
     const flags: { [key: string]: string } = {
@@ -34,12 +36,33 @@ const App: React.FC = () => {
     return names[langCode] || langCode
   }
 
+  const validateElo = (elo: number): boolean => {
+    if (sourcePlatform === 'lichess') {
+      return elo >= 400 && elo <= 2500;
+    } else {
+      return elo >= 100 && elo <= 2500;
+    }
+  };
+
   const convertElo = (elo: string) => {
     const numElo = parseInt(elo)
-    if (isNaN(numElo)) return ''
+    if (isNaN(numElo)) {
+      setError(t('invalidNumber'))
+      return ''
+    }
+
+    if (!validateElo(numElo)) {
+      setError(sourcePlatform === 'lichess' 
+        ? t('lichessRangeError', { min: 400, max: 2500 })
+        : t('chesscomRangeError', { min: 100, max: 2500 })
+      )
+      return ''
+    }
+
+    setError('')
     return sourcePlatform === 'lichess' 
-      ? (numElo + 300).toString() 
-      : (numElo - 300).toString()
+      ? Math.round(convertLichessToChesscom(numElo)).toString()
+      : Math.round(convertChesscomToLichess(numElo)).toString()
   }
 
   const handleEloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +73,7 @@ const App: React.FC = () => {
 
   const handlePlatformChange = (platform: Platform) => {
     setSourcePlatform(platform)
+    setError('')
     setConvertedElo(convertElo(elo))
   }
 
@@ -171,13 +195,20 @@ const App: React.FC = () => {
                 type="number"
                 value={elo}
                 onChange={handleEloChange}
-                className="w-full p-2 sm:p-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-200 text-base"
+                className={`w-full p-2 sm:p-3 rounded-lg border ${
+                  error ? 'border-red-500' : 'border-gray-300'
+                } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-200 text-base`}
                 placeholder={t('yourRating', { platform: t(sourcePlatform) })}
               />
+              {error && (
+                <p className="mt-2 text-sm text-red-500">
+                  {error}
+                </p>
+              )}
             </div>
 
             {/* Conversion Result */}
-            {convertedElo && (
+            {convertedElo && !error && (
               <div className="mt-4 sm:mt-6 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
                 <p className="text-sm sm:text-base text-gray-700 text-center">
                   {t('equivalentRating', { platform: t(sourcePlatform === 'lichess' ? 'chesscom' : 'lichess') })}
