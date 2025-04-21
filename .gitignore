@@ -19,7 +19,6 @@ node_modules
 /build
 /dist
 /dist-ssr
-/docs
 
 # Misc
 .DS_Store
