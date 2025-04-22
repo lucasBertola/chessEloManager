@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import './i18n/config'
@@ -16,12 +16,38 @@ const App: React.FC = () => {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
   const [error, setError] = useState<string>('')
 
+  // Écouter les changements d'URL
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const urlParams = new URLSearchParams(window.location.search)
+      const langParam = urlParams.get('lang')
+      if (langParam && ['en', 'fr', 'es', 'pt'].includes(langParam)) {
+        i18n.changeLanguage(langParam)
+      }
+    }
+
+    // Écouter les changements d'URL
+    window.addEventListener('popstate', handleUrlChange)
+    return () => window.removeEventListener('popstate', handleUrlChange)
+  }, [i18n])
+
+  // Mettre à jour l'URL quand la langue change
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+    setIsLangMenuOpen(false)
+    
+    // Mettre à jour l'URL sans recharger la page
+    const url = new URL(window.location.href)
+    url.searchParams.set('lang', lng)
+    window.history.pushState({}, '', url.toString())
+  }
+
   const getFlagEmoji = (langCode: string) => {
     const flags: { [key: string]: string } = {
       'en': '🇬🇧',
       'fr': '🇫🇷',
       'es': '🇪🇸',
-      'de': '🇩🇪'
+      'pt': '🇧🇷'
     }
     return flags[langCode] || '🌐'
   }
@@ -31,7 +57,7 @@ const App: React.FC = () => {
       'en': 'English',
       'fr': 'Français',
       'es': 'Español',
-      'de': 'Deutsch'
+      'pt': 'Português'
     }
     return names[langCode] || langCode
   }
@@ -77,11 +103,6 @@ const App: React.FC = () => {
     setConvertedElo(convertElo(elo))
   }
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
-    setIsLangMenuOpen(false)
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       {/* Language and GitHub Section */}
@@ -107,7 +128,7 @@ const App: React.FC = () => {
                 { code: 'en', flag: '🇬🇧' },
                 { code: 'fr', flag: '🇫🇷' },
                 { code: 'es', flag: '🇪🇸' },
-                { code: 'de', flag: '🇩🇪' }
+                { code: 'pt', flag: '🇧🇷' }
               ].map(({ code, flag }) => (
                 <button
                   key={code}

@@ -1,0 +1,79 @@
+export const en = {
+  "title": "Chess Rating Converter",
+  "subtitle": "Convert ratings between Lichess and Chess.com",
+  "sourcePlatform": "Source Platform",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "timeControl": "Time Control",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rapid",
+  "yourRating": "Your {{platform}} Rating",
+  "equivalentRating": "Equivalent {{platform}} Rating",
+  "invalidNumber": "Please enter a valid number",
+  "lichessRangeError": "Lichess rating must be between {{min}} and {{max}}",
+  "chesscomRangeError": "Chess.com rating must be between {{min}} and {{max}}",
+  "likeProject": "If you like this project, feel free to:",
+  "starOnGitHub": "Star on GitHub",
+  "forkOnGitHub": "Fork on GitHub"
+};
+
+export const fr = {
+  "title": "Convertisseur de Classement d'Échecs",
+  "subtitle": "Convertissez les classements entre Lichess et Chess.com",
+  "sourcePlatform": "Plateforme Source",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "timeControl": "Cadence de Jeu",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rapide",
+  "yourRating": "Votre classement {{platform}}",
+  "equivalentRating": "Classement {{platform}} équivalent",
+  "invalidNumber": "Veuillez entrer un nombre valide",
+  "lichessRangeError": "Le classement Lichess doit être entre {{min}} et {{max}}",
+  "chesscomRangeError": "Le classement Chess.com doit être entre {{min}} et {{max}}",
+  "likeProject": "Si vous aimez ce projet, n'hésitez pas à :",
+  "starOnGitHub": "Mettre une étoile sur GitHub",
+  "forkOnGitHub": "Faire un fork sur GitHub"
+};
+
+export const es = {
+  "title": "Conversor de Rating de Ajedrez",
+  "subtitle": "Convierte ratings entre Lichess y Chess.com",
+  "sourcePlatform": "Plataforma de Origen",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "timeControl": "Control de Tiempo",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rápido",
+  "yourRating": "Tu Rating en {{platform}}",
+  "equivalentRating": "Rating equivalente en {{platform}}",
+  "invalidNumber": "Por favor, introduce un número válido",
+  "lichessRangeError": "El rating de Lichess debe estar entre {{min}} y {{max}}",
+  "chesscomRangeError": "El rating de Chess.com debe estar entre {{min}} y {{max}}",
+  "likeProject": "Si te gusta este proyecto, no dudes en:",
+  "starOnGitHub": "Dar una estrella en GitHub",
+  "forkOnGitHub": "Hacer un fork en GitHub"
+};
+
+export const pt = {
+  "title": "Conversor de Rating de Xadrez",
+  "subtitle": "Converta ratings entre Lichess e Chess.com",
+  "sourcePlatform": "Plataforma de Origem",
+  "lichess": "Lichess",
+  "chesscom": "Chess.com",
+  "timeControl": "Controle de Tempo",
+  "bullet": "Bullet",
+  "blitz": "Blitz",
+  "rapid": "Rápido",
+  "yourRating": "Seu Rating no {{platform}}",
+  "equivalentRating": "Rating equivalente no {{platform}}",
+  "invalidNumber": "Por favor, insira um número válido",
+  "lichessRangeError": "O rating Lichess deve estar entre {{min}} e {{max}}",
+  "chesscomRangeError": "O rating Chess.com deve estar entre {{min}} e {{max}}",
+  "likeProject": "Se você gosta deste projeto, sinta-se à vontade para:",
+  "starOnGitHub": "Dar uma estrela no GitHub",
+  "forkOnGitHub": "Fazer um fork no GitHub"
+}; 
