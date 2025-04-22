@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lucasbertola.github.io/chessEloManager/sitemap.xml 
