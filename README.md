@@ -78,4 +78,17 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📫 Contact
 
-If you have any questions or suggestions, feel free to open an issue or contact the maintainer. 
+If you have any questions or suggestions, feel free to open an issue or contact the maintainer.
+
+## 📚 Additional Resources
+
+For more information about the conversion logic and the analysis behind these calculations, you can read my articles on Lichess:
+
+1. [Converting Chess.com to Lichess Ratings: A New Data-Driven Method](https://lichess.org/@/lucb3/blog/converting-chesscom-to-lichess-ratings-a-new-data-driven-method/Ww3v70WB)
+2. [Do Stronger Players Play More Accurately? I Analyzed 35,000 Games to Find Out](https://lichess.org/@/lucb3/blog/do-stronger-players-play-more-accurately-i-analyzed-35000-games-to-find-out/Ml0nRybj)
+
+These articles provide detailed explanations:
+- The methodology used for collecting and analyzing data
+- The mathematical formulas behind the conversions
+- Insights into the rating differences between platforms
+- Analysis of accuracy in moves based on level 
