@@ -4,7 +4,10 @@
  * 
  * 
  
-
+Affiche moi les deux courbes sur un graphique.
+la courbe lichess et la courbe chesscom
+en abcisse le elo de chaque plaforme et en ordonnée la precision moyenne des joueur sur les deux plaformes
+------
 une personne qui aurait 1500elo sur lichess, il serait quel elo sur chess? en se basant sur la precision pour faire la correspondance.
 fait un programme pour le savoir
 ------
@@ -17,6 +20,7 @@ Donne moi tous les numeros apres la virgule des coefficiants. Je veux au moins u
 Modifie bien la fonction str, pour dire d'ecrire la precision de 25
  */
 
+// Conversions pour le mode Rapid (mode par défaut)
 export const convertLichessToChesscom = (lichessRating: number): number => {
   const x = lichessRating;
   return (
@@ -68,5 +72,60 @@ export const convertChesscomToLichess = (chesscomRating: number): number => {
     5.113558055965835 * Math.pow(x, 2) +
     -421.0123794543023 * x +
     15032.853712717828
+  );
+};
+
+// Conversions pour le mode Blitz
+export const convertLichessToChesscomBlitz = (lichessRating: number): number => {
+  const x = lichessRating;
+  const coeffs = [
+    5.85073652719581e-57,
+    -1.124182574164821e-52,
+    9.182649632943842e-49,
+    -3.965911290696621e-45,
+    8.371575825141521e-42,
+    1.5743269292498361e-40,
+    -4.239521983760826e-35,
+    6.443335085159378e-32,
+    1.2846981479501876e-28,
+    -5.459378801851045e-25,
+    2.800646214012337e-22,
+    2.3754006856032133e-18,
+    -7.874091240392498e-15,
+    1.354862099731365e-11,
+    -1.541918134927885e-8,
+    1.2341034905175078e-5,
+    -0.007026959014431837,
+    2.797460604143755,
+    -741.4732578279005,
+    117628.21990400263,
+    -8449533.314344613
+  ];
+
+  return coeffs.reduce((acc, coef) => acc * x + coef, 0);
+};
+
+export const convertChesscomToLichessBlitz = (chesscomRating: number): number => {
+  const x = chesscomRating;
+  return (
+    2.811547854365714e-50 * Math.pow(x, 18) +
+    -6.056389939387919e-46 * Math.pow(x, 17) +
+    5.982590266636738e-42 * Math.pow(x, 16) +
+    -3.5907972512243416e-38 * Math.pow(x, 15) +
+    1.4626832375448736e-34 * Math.pow(x, 14) +
+    -4.277375017781904e-31 * Math.pow(x, 13) +
+    9.263029148033261e-28 * Math.pow(x, 12) +
+    -1.5102615918423231e-24 * Math.pow(x, 11) +
+    1.8659145041296347e-21 * Math.pow(x, 10) +
+    -1.743753512002554e-18 * Math.pow(x, 9) +
+    1.220193390431627e-15 * Math.pow(x, 8) +
+    -6.263723474962843e-13 * Math.pow(x, 7) +
+    2.2737557719130167e-10 * Math.pow(x, 6) +
+    -5.435374581975225e-8 * Math.pow(x, 5) +
+    7.095992025942681e-6 * Math.pow(x, 4) +
+    -0.000057023450634888826 * Math.pow(x, 3) +
+    -0.12912253794967324 * Math.pow(x, 2) +
+    18.819767812897624 * x +
+    -370.71705141071413
   );
 };

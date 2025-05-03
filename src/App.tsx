@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import './i18n/config'
-import { convertLichessToChesscom, convertChesscomToLichess } from './utils/conversion'
+import { 
+  convertLichessToChesscom, 
+  convertChesscomToLichess, 
+  convertLichessToChesscomBlitz,
+  convertChesscomToLichessBlitz
+} from './utils/conversion'
 
 type Platform = 'lichess' | 'chesscom'
 type TimeControl = 'bullet' | 'blitz' | 'rapid'
@@ -64,8 +69,14 @@ const App: React.FC = () => {
 
   const validateElo = (elo: number): boolean => {
     if (sourcePlatform === 'lichess') {
+      if (timeControl === 'blitz') {
+        return elo >= 500 && elo <= 2350;
+      }
       return elo >= 400 && elo <= 2500;
     } else {
+      if (timeControl === 'blitz') {
+        return elo >= 100 && elo <= 2400;
+      }
       return elo >= 150 && elo <= 2500;
     }
   };
@@ -78,17 +89,34 @@ const App: React.FC = () => {
     }
 
     if (!validateElo(numElo)) {
-      setError(sourcePlatform === 'lichess' 
-        ? t('lichessRangeError', { min: 400, max: 2500 })
-        : t('chesscomRangeError', { min: 150, max: 2500 })
-      )
+      if (sourcePlatform === 'lichess') {
+        if (timeControl === 'blitz') {
+          setError(t('lichessRangeError', { min: 500, max: 2350 }))
+        } else {
+          setError(t('lichessRangeError', { min: 400, max: 2500 }))
+        }
+      } else {
+        if (timeControl === 'blitz') {
+          setError(t('chesscomRangeError', { min: 100, max: 2400 }))
+        } else {
+          setError(t('chesscomRangeError', { min: 150, max: 2500 }))
+        }
+      }
       return ''
     }
 
     setError('')
-    return sourcePlatform === 'lichess' 
-      ? Math.round(convertLichessToChesscom(numElo)).toString()
-      : Math.round(convertChesscomToLichess(numElo)).toString()
+    
+    if (timeControl === 'blitz') {
+      return sourcePlatform === 'lichess' 
+        ? Math.round(convertLichessToChesscomBlitz(numElo)).toString()
+        : Math.round(convertChesscomToLichessBlitz(numElo)).toString()
+    } else {
+      // Pour 'rapid' et autres modes
+      return sourcePlatform === 'lichess' 
+        ? Math.round(convertLichessToChesscom(numElo)).toString()
+        : Math.round(convertChesscomToLichess(numElo)).toString()
+    }
   }
 
   const handleEloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,6 +130,23 @@ const App: React.FC = () => {
     setError('')
     setConvertedElo(convertElo(elo))
   }
+
+  const handleTimeControlChange = (control: TimeControl) => {
+    setTimeControl(control)
+    setError('')
+    // Force le recalcul même si elo n'a pas changé
+    if (elo) {
+      setConvertedElo(convertElo(elo))
+    }
+  }
+
+  // Effet pour recalculer convertedElo quand timeControl ou sourcePlatform change
+  useEffect(() => {
+    if (elo) {
+      const result = convertElo(elo)
+      setConvertedElo(result)
+    }
+  }, [timeControl, sourcePlatform, elo])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
@@ -207,14 +252,22 @@ const App: React.FC = () => {
                   {t('bullet')}
                 </button>
                 <button
-                  className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed text-sm sm:text-base"
-                  disabled
+                  onClick={() => handleTimeControlChange('blitz')}
+                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border transition-all duration-200 ${
+                    timeControl === 'blitz'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500 hover:shadow-sm'
+                  }`}
                 >
                   {t('blitz')}
                 </button>
                 <button
-                  onClick={() => setTimeControl('rapid')}
-                  className="flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border bg-blue-600 text-white border-blue-600 shadow-md text-sm sm:text-base"
+                  onClick={() => handleTimeControlChange('rapid')}
+                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg border transition-all duration-200 ${
+                    timeControl === 'rapid'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500 hover:shadow-sm'
+                  }`}
                 >
                   {t('rapid')}
                 </button>
