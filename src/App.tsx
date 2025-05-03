@@ -253,6 +253,19 @@ const App: React.FC = () => {
                 </p>
               </div>
             )}
+            
+            {/* Discrete method note */}
+            <div className="mt-3 text-center text-xs text-gray-500">
+              {t('methodNote')}
+              <a 
+                href="https://lichess.org/@/lucb3/blog/converting-chesscom-to-lichess-ratings-a-new-data-driven-method/Ww3v70WB" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-500 hover:text-blue-700 hover:underline"
+              >
+                {t('readMore')}
+              </a>
+            </div>
           </div>
         </div>
       </div>

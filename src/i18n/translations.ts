@@ -15,7 +15,9 @@ export const en = {
   "chesscomRangeError": "Chess.com rating must be between {{min}} and {{max}}",
   "likeProject": "If you like this project, feel free to:",
   "starOnGitHub": "Star on GitHub",
-  "forkOnGitHub": "Fork on GitHub"
+  "forkOnGitHub": "Fork on GitHub",
+  "methodNote": "Based on a mathematical approach for maximum precision. ",
+  "readMore": "Read more"
 };
 
 export const fr = {
@@ -35,7 +37,9 @@ export const fr = {
   "chesscomRangeError": "Le classement Chess.com doit être entre {{min}} et {{max}}",
   "likeProject": "Si vous aimez ce projet, n'hésitez pas à :",
   "starOnGitHub": "Mettre une étoile sur GitHub",
-  "forkOnGitHub": "Faire un fork sur GitHub"
+  "forkOnGitHub": "Faire un fork sur GitHub",
+  "methodNote": "Basé sur une approche mathématique pour une précision maximale. ",
+  "readMore": "En savoir plus"
 };
 
 export const es = {
@@ -55,7 +59,9 @@ export const es = {
   "chesscomRangeError": "El rating de Chess.com debe estar entre {{min}} y {{max}}",
   "likeProject": "Si te gusta este proyecto, no dudes en:",
   "starOnGitHub": "Dar una estrella en GitHub",
-  "forkOnGitHub": "Hacer un fork en GitHub"
+  "forkOnGitHub": "Hacer un fork en GitHub",
+  "methodNote": "Basado en un enfoque matemático para máxima precisión. ",
+  "readMore": "Leer más"
 };
 
 export const pt = {
@@ -75,5 +81,7 @@ export const pt = {
   "chesscomRangeError": "O rating Chess.com deve estar entre {{min}} e {{max}}",
   "likeProject": "Se você gosta deste projeto, sinta-se à vontade para:",
   "starOnGitHub": "Dar uma estrela no GitHub",
-  "forkOnGitHub": "Fazer um fork no GitHub"
+  "forkOnGitHub": "Fazer um fork no GitHub",
+  "methodNote": "Baseado em uma abordagem matemática para máxima precisão. ",
+  "readMore": "Saiba mais"
 }; 
