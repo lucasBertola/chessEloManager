@@ -66,7 +66,7 @@ const App: React.FC = () => {
     if (sourcePlatform === 'lichess') {
       return elo >= 400 && elo <= 2500;
     } else {
-      return elo >= 100 && elo <= 2500;
+      return elo >= 150 && elo <= 2500;
     }
   };
 
@@ -80,7 +80,7 @@ const App: React.FC = () => {
     if (!validateElo(numElo)) {
       setError(sourcePlatform === 'lichess' 
         ? t('lichessRangeError', { min: 400, max: 2500 })
-        : t('chesscomRangeError', { min: 100, max: 2500 })
+        : t('chesscomRangeError', { min: 150, max: 2500 })
       )
       return ''
     }
